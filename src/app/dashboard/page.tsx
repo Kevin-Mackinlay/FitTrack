@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
+import  Link from 'next/link';
 
 interface UserProfile {
   email?: string; // Email is optional
@@ -61,6 +62,9 @@ export default function Dashboard() {
             <button onClick={handleLogout} className="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-200">
               Logout
             </button>
+            <Link href="/workouts" className="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-200">
+              Go to Workout Tracker
+            </Link>
           </>
         )}
       </div>
