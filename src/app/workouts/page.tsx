@@ -93,6 +93,17 @@ console.log('Inserting workout:', { user_id: user.id, title, description });
     }
   };
 
+  const deleteWorkout = async (id: string) => {
+    const { error } = await supabase.from('workouts').delete().eq('id', id);
+    if (!error) {
+      setWorkouts((prev) => prev.filter((w) => w.id !== id));
+    } else {
+      console.error('Error deleting workout:', error);
+         alert('Error deleting workout');
+    }
+  };
+
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
@@ -117,8 +128,11 @@ console.log('Inserting workout:', { user_id: user.id, title, description });
               <div>
                 <h2 className={`font-bold ${workout.completed ? 'line-through' : ''}`}>{workout.title}</h2>
                 <p className="text-sm text-gray-500">{workout.description}</p>
+                <button onClick={() => deleteWorkout(workout.id)} className="text-red-500 hover:text-red-800 text-sm ">
+                  Delete
+                </button>
               </div>
-              <button onClick={() => toggleCompleted(workout)} className={`text-sm ${workout.completed ? 'text-green-600 hover:text-green-800' : 'text-gray-600 hover:text-black'}`}>
+              <button onClick={() => toggleCompleted(workout)} className={`text-md px-4 py-1 rounded font-semibold shadow  ${workout.completed ? 'text-green-600 hover:text-green-800  ' : 'text-gray-600 hover:text-black'}`}>
                 {workout.completed ? '✓' : 'Mark'}
               </button>
             </div>
