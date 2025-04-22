@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6 text-center">
+      <div className="max-w-md w-full bg-gray-300 rounded-lg shadow-md p-6 text-center">
         <h1 className="text-2xl font-bold text-gray-800">Welcome to FitTrack</h1>
         <p className="text-gray-500 mt-2">Track your fitness and progress easily!</p>
 
